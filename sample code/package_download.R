@@ -13,6 +13,3 @@ devtools::install_github("hyunyulhenry/HenryQuant")
 # devtools 패키지 중install_github 함수 사용
 # 변수로는 패키지가 있는 github 주소 사용
 library(HenryQuant) # 패키지 열기
-
-
-
