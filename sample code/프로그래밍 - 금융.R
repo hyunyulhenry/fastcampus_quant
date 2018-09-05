@@ -96,6 +96,10 @@ price = Cl(`005930.KS`)
 ret = Return.calculate(price)
 charts.PerformanceSummary(ret)
 
+# FRED Data Download #
+getSymbols("DEXKOUS", src = "FRED")
+plot(DEXKOUS)
+
 # 절대모멘텀 구하기 #
 symbols = "SPY"
 getSymbols(symbols, src='yahoo', auto.assign=TRUE, 
