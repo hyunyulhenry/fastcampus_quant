@@ -11,9 +11,9 @@ packages = c("PerformanceAnalytics", "quantmod", "openxlsx")
 ipak(packages) # Package Download & open
 
 # Input data (K200) #
-price_m = read.xlsx("Example_LowVol.xlsx", sheet = "price_m", rows = c(10, 15:10000), rowNames = TRUE, colNames = TRUE, detectDates = TRUE)
-stop = read.xlsx("Example_LowVol.xlsx", sheet = "stop", rows = c(10, 15:10000), rowNames = TRUE, colNames = TRUE, detectDates = TRUE)
-including = read.xlsx("Example_LowVol.xlsx", sheet = "including", rows = c(10, 15:10000), rowNames = TRUE, colNames = TRUE, detectDates = TRUE)
+price_m = read.xlsx("KOSPI200_data.xlsx", sheet = "price_m", rows = c(10, 15:10000), rowNames = TRUE, colNames = TRUE, detectDates = TRUE)
+stop = read.xlsx("KOSPI200_data.xlsx", sheet = "stop", rows = c(10, 15:10000), rowNames = TRUE, colNames = TRUE, detectDates = TRUE)
+including = read.xlsx("KOSPI200_data.xlsx", sheet = "including", rows = c(10, 15:10000), rowNames = TRUE, colNames = TRUE, detectDates = TRUE)
 
 price_m[is.na(price_m)] = 0
 ret_m = Return.calculate(price_m)
@@ -25,8 +25,6 @@ price_m[price_m==0] = NA
 ro = dim(price_m)[1]
 co = dim(price_m)[2] 
 quan = 5 
-
-# std2 = rollapply(ret_m, 60, sd)
 
 # BackTest #
 result = matrix(NA,ro,quan)
@@ -68,7 +66,6 @@ chart.CumReturns(result, main="")
 chart.Drawdown(result, main = "Drawdown")
 chart.RiskReturnScatter(result)
 apply.yearly(result, Return.cumulative)
-
 yr_plot(result)
 
 Return.cumulative(result)
@@ -88,5 +85,3 @@ result.stat = function(R) {
   return(stat)
 }
 result.stat(result)
-    
-
