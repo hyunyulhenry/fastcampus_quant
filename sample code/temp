@@ -1,0 +1,7 @@
+install.packages("PerformanceAnalytics")
+install.packages("quantmod")
+install.packages("openxlsx")
+
+library(PerformanceAnalytics)
+library(quantmod)
+library(openxlsx)
