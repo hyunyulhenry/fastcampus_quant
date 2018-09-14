@@ -3,7 +3,8 @@ library(xts)
 library(PerformanceAnalytics)
 
 ticker = read.csv("KOR_ticker.csv", row.names = 1)
-price = read.csv("KOR_price.csv", row.names = 1) %>% as.xts()
+price = read.csv("KOR_price.csv", row.names = 1)
+price = as.xts(price)
 
 head(index(price))
 tail(index(price))
