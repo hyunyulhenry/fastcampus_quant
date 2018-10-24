@@ -1,5 +1,8 @@
 ## 크롤링 시에는 웹브라우저로 구글의 Chrome을 사용하는 것이 훨씬 편합니다. ##
 
+install.packages("rvest")
+install.packages("httr")
+
 library(rvest)
 library(httr)
 
@@ -10,6 +13,7 @@ url = "https://finance.naver.com/news/mainnews.nhn"
 news = GET(url)
 
 news = read_html(news) # 네이버는 인코딩이 euc-kr로 이루어져 있어 오류가 발생합니다.
+guess_encoding(news)
 news = read_html(news, encoding = "euc-kr")
 
 # title = html_nodes(news, ".articleSubject")
